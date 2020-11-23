@@ -1,42 +1,28 @@
-CREATE TABLE USUARIO
-(
-    id serial primary key,
-    usuario text NOT NULL,
-    contraseña text NOT NULL,
-    fecha date NOT NULL,
-    estado boolean NOT NULL
-);
-
-
 CREATE TABLE ALUMNO
 (
-    id serial NOT NULL PRIMARY KEY,
+    id serial NOT NULL,
     nombre text NOT NULL,
     apellido text NOT NULL,
     dni char(8) NOT NULL,
     fecha_nacimiento date NOT NULL,
     direccion text NOT NULL,
-    codigo char(10) NOT NULL,
     correo text NOT NULL,
-    contraseña text NOT NULL,
     estado char(1) NOT NULL,
-    id_usuario integer NOT NULL REFERENCES usuario
-
+    CONSTRAINT PK_alumno PRIMARY KEY ( id )
 );
+
 
 CREATE TABLE DOCENTE
 (
-    id serial NOT NULL PRIMARY KEY,
+    id serial NOT NULL,
     nombre text NOT NULL,
     apellido text NOT NULL,
     dni char(8) NOT NULL,
     fecha_nacimiento date NOT NULL,
     direccion text NOT NULL,
-    codigo char(10) NOT NULL,
     correo text NOT NULL,
-    contraseña text NOT NULL,
     estado char(1) NOT NULL,
-    id_usuario integer NOT NULL REFERENCES usuario
+    CONSTRAINT PK_docente PRIMARY KEY ( id )
 );
 
 CREATE TABLE AMBIENTE
@@ -60,17 +46,6 @@ CREATE TABLE HORARIO
     CONSTRAINT FK_92 FOREIGN KEY ( id_Ambiente ) REFERENCES AMBIENTE ( id )
 );
 
-CREATE TABLE DOCUMENTO
-(
-    id serial NOT NULL,
-    nombre text NOT NULL,
-    descripcion text NULL,
-    url text NOT NULL,
-    id_Tesis integer NOT NULL,
-    CONSTRAINT PK_documento PRIMARY KEY ( id ),
-    CONSTRAINT FK_55 FOREIGN KEY ( id_Tesis ) REFERENCES TESIS ( id )
-);
-
 CREATE TABLE SUSTENTACION
 (
     Id serial NOT NULL,
@@ -92,9 +67,14 @@ CREATE TABLE TESIS
     titulo text NOT NULL,
     tema text NOT NULL,
     fecha date NOT NULL,
-    nota integer NOT NULL,
-    resolucionJurado text NULL,
-    fecha_jurado date NOT NULL,
+    nota integer NULL,
+    resolucion_Jurado text NULL,
+    fecha_jurado date NULL,
+    resolucion_Asesor text NULL,
+    fecha_asesor date null,
+    resolucion_Sustentacion text NULL,
+    fecha_sustentacion date null,
+    url text NULL,
     estado boolean NOT NULL,
     id_Alumno integer NOT NULL,
     Id_Sustentacion integer NULL,
@@ -137,3 +117,13 @@ CREATE TABLE AUDITORIA
     CONSTRAINT FK_116 FOREIGN KEY ( id_Tesis ) REFERENCES TESIS ( id ),
     CONSTRAINT FK_151 FOREIGN KEY ( id_Horario ) REFERENCES HORARIO ( id )
 );
+
+INSERT INTO alumno
+VALUES
+    (1, 'Brawer', 'Nuñez Mesones', '73820292', '28-02-1999', 'Mz A Lt20', 'nmesonesb@gmail.com', 'A')
+INSERT INTO alumno
+VALUES
+    (2, 'Brandon Alonso', 'Chiroque Huamanchumo', '73811206', '28-02-1999', 'Mz E Lote 1', 'xiroque@gmail.com', 'A')
+INSERT INTO alumno
+VALUES
+    (3, 'Carlos', 'Olivos Seclen', '73039283', '14-05-2000', 'Mz U Lote 3', 'seclen@gmail.com', 'A')
