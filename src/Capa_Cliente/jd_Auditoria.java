@@ -69,6 +69,11 @@ public class jd_Auditoria extends javax.swing.JDialog {
         jScrollPane2.setViewportView(jTree1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(88, 111, 124));
 
@@ -264,6 +269,15 @@ public class jd_Auditoria extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this,"Error al buscar auditoria"+ e.getMessage());
         }
     }//GEN-LAST:event_btnBuscarCodigoActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        try {
+            txtCodigo.setText(String.valueOf(objAuditoria.generarCodigo()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,"Error al generar el código de la auditoria"+ e.getMessage());
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
