@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author needa
  */
-public class jd_BuscarAlumno extends javax.swing.JDialog {
+public class jd_BuscarTesis extends javax.swing.JDialog {
     
     
     public static boolean funcNuevo;
@@ -25,7 +25,7 @@ public class jd_BuscarAlumno extends javax.swing.JDialog {
     /**
      * Creates new form jd_BuscarAlumno
      */
-    public jd_BuscarAlumno(javax.swing.JDialog parent, boolean modal) {
+    public jd_BuscarTesis(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
