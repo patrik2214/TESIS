@@ -22,6 +22,7 @@ public class jd_Auditoria extends javax.swing.JDialog {
      */
     clsTesis objTesis = new clsTesis();
     clsAuditoria objAuditoria = new clsAuditoria();
+    clsHorario objHorario = new clsHorario();
     
     public jd_Auditoria(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -280,10 +281,8 @@ public class jd_Auditoria extends javax.swing.JDialog {
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
         // TODO add your handling code here:
         try {
-            clsHorario horario = null;
-            clsTesis tesis = null;
-            objAuditoria.setTesis(tesis);
-            objAuditoria.setHorario(horario);
+            objTesis.setId(Integer.parseInt(txtBuscarTesis.getText()));
+            objHorario.setId(Integer.parseInt(txtBuscarHorario.getText()));
             boolean estado = false;
             if(cboComentario.getSelectedItem().equals("Realizado")){
                 estado = true;
@@ -306,10 +305,8 @@ public class jd_Auditoria extends javax.swing.JDialog {
             }else{
                 if(btn_nuevo.equals("Guardar")){
                     objAuditoria.setId(Integer.parseInt(txtCodigo.getText()));
-                    clsHorario horario = null;
-                    clsTesis tesis = null;
-                    objAuditoria.setTesis(tesis);
-                    objAuditoria.setHorario(horario);
+                    objTesis.setId(Integer.parseInt(txtBuscarTesis.getText()));
+                    objHorario.setId(Integer.parseInt(txtBuscarHorario.getText()));
                     boolean estado = false;
                     if(cboComentario.getSelectedItem().equals("Realizado")){
                         estado = true;
