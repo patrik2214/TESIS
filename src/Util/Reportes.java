@@ -1,5 +1,4 @@
 package Util;
-
 import Capa_Datos.clsJDBC;
 import java.util.Map;
 import javax.print.attribute.HashPrintServiceAttributeSet;
