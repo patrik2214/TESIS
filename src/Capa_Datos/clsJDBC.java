@@ -11,6 +11,7 @@ import java.sql.*;
  */
 public class clsJDBC {
        
+    private Connection con;
     private static final String DRIVER = "org.postgresql.Driver";
     private static final String DATABASE = "DB_Tesis";
     private static final String HOST = "localhost";
@@ -40,5 +41,24 @@ public class clsJDBC {
         } catch (Exception e) {
             throw new Exception("Error al obtener fecha actual");
         }
+    }
+    //Conectar
+    public void conectar() throws Exception{
+        try{
+           Class.forName(DRIVER);
+           con=DriverManager.getConnection(URL, USER, PASSWORD);
+        }catch(ClassNotFoundException | SQLException ex){
+        }
+    }
+    //Desconectar
+    public void desconectar() throws Exception{
+        try{
+           con.close();
+        } catch (SQLException ex) {
+             throw new Exception("Error al desconectar de la BD!");
+        }
+    }
+    public Connection getCon() {
+        return con;
     }
 }
