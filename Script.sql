@@ -11,7 +11,6 @@ CREATE TABLE ALUMNO
     CONSTRAINT PK_alumno PRIMARY KEY ( id )
 );
 
-
 CREATE TABLE DOCENTE
 (
     id serial NOT NULL,
