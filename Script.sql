@@ -24,27 +24,6 @@ CREATE TABLE DOCENTE
     CONSTRAINT PK_docente PRIMARY KEY ( id )
 );
 
-CREATE TABLE AMBIENTE
-(
-    id serial NOT NULL,
-    nombre text NOT NULL,
-    descripcion text NOT NULL,
-    estado char(1) NOT NULL,
-    CONSTRAINT PK_ambiente PRIMARY KEY ( id )
-);
-
-CREATE TABLE HORARIO
-(
-    id serial NOT NULL,
-    fecha date NOT NULL,
-    hora_inicio time NOT NULL,
-    hora_fin time NOT NULL,
-    estado boolean NOT NULL,
-    id_Ambiente integer NOT NULL,
-    CONSTRAINT PK_horario PRIMARY KEY ( id ),
-    CONSTRAINT FK_92 FOREIGN KEY ( id_Ambiente ) REFERENCES AMBIENTE ( id )
-);
-
 CREATE TABLE SUSTENTACION
 (
     Id serial NOT NULL,
@@ -88,9 +67,8 @@ CREATE TABLE ASESORIA
     comentarios text NOT NULL,
     id_Docente integer NOT NULL,
     id_Tesis integer NOT NULL,
-    id_Horario integer NOT NULL,
+    fecha date NOT NULL,
     CONSTRAINT PK_asesoria PRIMARY KEY ( id ),
-    CONSTRAINT FK_101 FOREIGN KEY ( id_Horario ) REFERENCES HORARIO ( id ),
     CONSTRAINT FK_95 FOREIGN KEY ( id_Docente ) REFERENCES DOCENTE ( id ),
     CONSTRAINT FK_98 FOREIGN KEY ( id_Tesis ) REFERENCES TESIS ( id )
 );
@@ -111,10 +89,9 @@ CREATE TABLE AUDITORIA
     comentarios varchar(100) NULL,
     estado boolean NULL,
     id_Tesis integer NOT NULL,
-    id_Horario integer NOT NULL,
+    fecha date NOT NULL,
     CONSTRAINT PK_auditoria PRIMARY KEY ( id ),
-    CONSTRAINT FK_116 FOREIGN KEY ( id_Tesis ) REFERENCES TESIS ( id ),
-    CONSTRAINT FK_151 FOREIGN KEY ( id_Horario ) REFERENCES HORARIO ( id )
+    CONSTRAINT FK_116 FOREIGN KEY ( id_Tesis ) REFERENCES TESIS ( id )
 );
 
 INSERT INTO alumno
