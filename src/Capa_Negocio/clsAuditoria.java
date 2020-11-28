@@ -19,7 +19,7 @@ public class clsAuditoria {
     private String comentarios;
     private Boolean estado;
     private clsTesis tesis;
-    private clsHorario horario;
+    private Date fecha;
     
     public static int generarCodigo() throws Exception {
         try (Connection con = clsJDBC.getConexion()) {
@@ -44,7 +44,7 @@ public class clsAuditoria {
                 objA.setComentarios(rs.getString(2));
                 objA.setEstado(rs.getBoolean(3));                
                 objA.setTesis(clsTesis.buscar(rs.getInt(4)));
-                objA.setHorario(clsHorario.buscar(rs.getInt(5)));
+                objA.setFecha(rs.getDate(5));
                 return objA;
             }else{
                 return null;
@@ -62,7 +62,7 @@ public class clsAuditoria {
             ps.setString(2, this.comentarios);
             ps.setBoolean(3, this.estado);            
             ps.setInt(4, this.tesis.getId());           
-            ps.setInt(5, this.horario.getId());           
+            ps.setDate(5, this.fecha);           
             ps.execute();
         } catch (Exception e) {
             throw new Exception("Error al registrar Auditoria");
@@ -91,7 +91,7 @@ public class clsAuditoria {
                 objA.setComentarios(rs.getString(2));
                 objA.setEstado(rs.getBoolean(3));                
                 objA.setTesis(clsTesis.buscar(rs.getInt(4)));
-                objA.setHorario(clsHorario.buscar(rs.getInt(5)));               
+                objA.setFecha(rs.getDate(5));               
                 lista.add(objA);
             }
             return lista;
@@ -107,7 +107,7 @@ public class clsAuditoria {
             ps.setString(1, objA.getComentarios());
             ps.setBoolean(2, objA.getEstado());
             ps.setInt(3, objA.getTesis().getId());  
-            ps.setInt(4, objA.getHorario().getId());                       
+            ps.setDate(4, objA.getFecha());                       
             ps.setInt(5, id);
             ps.execute();          
         } catch (Exception e) {
@@ -147,12 +147,12 @@ public class clsAuditoria {
         this.tesis = tesis;
     }
 
-    public clsHorario getHorario() {
-        return horario;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setHorario(clsHorario horario) {
-        this.horario = horario;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
     
     
