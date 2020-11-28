@@ -38,12 +38,10 @@ public class jd_ReporteTesisMes extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txt_inicio = new javax.swing.JTextField();
-        txt_fin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         vistaReporte = new javax.swing.JPanel();
         btnBuscar = new javax.swing.JButton();
+        cbo_mes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -51,22 +49,9 @@ public class jd_ReporteTesisMes extends javax.swing.JDialog {
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, java.awt.Color.darkGray, java.awt.Color.darkGray));
         jPanel2.setForeground(new java.awt.Color(34, 116, 165));
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(244, 244, 249));
-        jLabel1.setText("Hasta:");
-
-        txt_inicio.setPreferredSize(new java.awt.Dimension(30, 22));
-        txt_inicio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_inicioActionPerformed(evt);
-            }
-        });
-
-        txt_fin.setPreferredSize(new java.awt.Dimension(30, 22));
-
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(244, 244, 249));
-        jLabel2.setText("Desde:");
+        jLabel2.setText("Mes:");
 
         javax.swing.GroupLayout vistaReporteLayout = new javax.swing.GroupLayout(vistaReporte);
         vistaReporte.setLayout(vistaReporteLayout);
@@ -86,6 +71,8 @@ public class jd_ReporteTesisMes extends javax.swing.JDialog {
             }
         });
 
+        cbo_mes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero ", "Febrero", "Marzo ", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -96,11 +83,7 @@ public class jd_ReporteTesisMes extends javax.swing.JDialog {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_fin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbo_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnBuscar))
                     .addComponent(vistaReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -111,12 +94,10 @@ public class jd_ReporteTesisMes extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(45, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txt_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txt_fin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cbo_mes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(vistaReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51))
@@ -136,34 +117,71 @@ public class jd_ReporteTesisMes extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txt_inicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_inicioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_inicioActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         try{
-            Container contenedor = this.vistaReporte;
-            contenedor.setLayout(new BorderLayout());
-            Map parametros = new HashMap();
-            parametros.put("año_inicio",Integer.parseInt(txt_inicio.getText()));
-            parametros.put("año_fin",Integer.parseInt(txt_fin.getText()));
-            JRViewer objReporte = new Reportes().reporteInterno("reporteTesisAprobadasyDesaprobadas", parametros);
-            contenedor.add(objReporte);
-            objReporte.setVisible(true);
-            this.vistaReporte.setVisible(true);
+            int mes= 0;
+            if(cbo_mes.getSelectedItem().equals("Enero")){
+                mes = 1;
+            }
+            if(cbo_mes.getSelectedItem().equals("Febrero")){
+                mes = 2;
+            }
+            if(cbo_mes.getSelectedItem().equals("Marzo")){
+                mes = 3;
+            }
+            if(cbo_mes.getSelectedItem().equals("Abril")){
+                mes = 4;
+            }
+            if(cbo_mes.getSelectedItem().equals("Mayo")){
+                mes = 5;
+            }
+            if(cbo_mes.getSelectedItem().equals("Junio")){
+                mes = 6;
+            }
+            if(cbo_mes.getSelectedItem().equals("Julio")){
+                mes = 7;
+            }
+            if(cbo_mes.getSelectedItem().equals("Agosto")){
+                mes = 8;
+            }
+            if(cbo_mes.getSelectedItem().equals("Septiembre")){
+                mes = 9;
+            }
+            if(cbo_mes.getSelectedItem().equals("Octubre")){
+                mes = 10;
+            }
+            if(cbo_mes.getSelectedItem().equals("Noviembre")){
+                mes = 11;
+            }
+            if(cbo_mes.getSelectedItem().equals("diciembre")){
+                mes = 12;
+            }
+            
+            if(mes >0){
+                Container contenedor = this.vistaReporte;
+                contenedor.setLayout(new BorderLayout());
+                Map parametros = new HashMap();
+                parametros.put("mes",mes);
+                JRViewer objReporte = new Reportes().reporteInterno("reporteTesisSustentarporMes", parametros);
+                contenedor.add(objReporte);
+                objReporte.setVisible(true);
+                this.vistaReporte.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Seleccione un mes");
+            }
+            
         }catch (Exception e){
             JOptionPane.showMessageDialog(this, e.getMessage() + "ERROR en Reporte","Error", JOptionPane.ERROR_MESSAGE);
+            
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cbo_mes;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField txt_fin;
-    private javax.swing.JTextField txt_inicio;
     private javax.swing.JPanel vistaReporte;
     // End of variables declaration//GEN-END:variables
 }
