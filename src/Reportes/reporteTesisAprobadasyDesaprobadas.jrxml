@@ -10,12 +10,14 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT COUNT(*) as valor FROM alumno
+		<![CDATA[SELECT COUNT(*),tesis.estado as valor FROM alumno
 INNER JOIN tesis on tesis.id_Alumno = alumno.id
 INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
 WHERE  EXTRACT(YEAR FROM sustentacion.fecha)::int >= $P{año_inicio} and EXTRACT(YEAR FROM sustentacion.fecha)::int <= $P{año_fin}
 GROUP BY tesis.estado;]]>
 	</queryString>
+	<field name="count" class="java.lang.Long"/>
+	<field name="valor" class="java.lang.Boolean"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -26,7 +28,7 @@ GROUP BY tesis.estado;]]>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[REPORTE DE TESIS APROBADAS Y DESAPROBADAS EN EL MES DE ]]></text>
+				<text><![CDATA[REPORTE DE CANTIDAD TESIS APROBADAS Y DESAPROBADAS EN EL MES DE ]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -34,16 +36,52 @@ GROUP BY tesis.estado;]]>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="105c1219-b022-4db0-a6ae-6892efc14cf3"/>
+				<text><![CDATA[valor]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="2" width="100" height="20" uuid="788f6733-af88-46a2-ae4b-e2e3ae2d1bf5"/>
+				<text><![CDATA[count]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="118" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="92913d00-eed8-4fdb-b554-3ad85ae22d50"/>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="0" width="100" height="20" uuid="ccc922c4-b528-481e-a544-adfe61e3d79a"/>
+				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="413" y="34" width="80" height="20" uuid="c88bb60f-3b34-4077-86b4-c97f21aa9a86"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="493" y="34" width="40" height="20" uuid="952d149c-0af8-46a9-a66b-e6e4f7809789"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="34" width="100" height="20" uuid="7202198a-f1c8-4e01-9007-2cec397bb3ce"/>
+				<text><![CDATA[Fecha de emisión: ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="100" y="34" width="100" height="20" uuid="4ec59948-8797-4b45-acb8-4f06e5590926"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
