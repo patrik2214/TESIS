@@ -1,25 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteTesisporCaducar" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="22745bde-5e3f-4195-a7d8-99710a1e64e1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT alumno.nombre||' '||alumno.apellido AS tesista,tesis.titulo, sustentacion.fecha FROM alumno
+INNER JOIN tesis on tesis.id_Alumno = alumno.id
+INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
+WHERE  (tesis.fecha- current_date)::int <=48]]>
+	</queryString>
+	<field name="tesista" class="java.lang.String"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="93" y="24" width="410" height="33" uuid="36d466de-e013-495b-bc67-002f9fcdca7a"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE TESIS POR PASAR EL PLAZO]]></text>
+			</staticText>
+			<image>
+				<reportElement x="34" y="24" width="46" height="33" uuid="50009f92-1eeb-4d70-a214-c424ef7a24d6"/>
+				<imageExpression><![CDATA["D:\\pryTesis\\src\\Recursos\\logousat1.jpg"]]></imageExpression>
+			</image>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="128" height="20" uuid="9c6e8d0c-7f58-4363-9ab1-fde2bce0e411"/>
+				<text><![CDATA[tesista]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="254" height="20" uuid="046b5e86-b7ec-47e1-8569-ecd4380ae489"/>
+				<text><![CDATA[titulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="127" height="20" uuid="427945bc-bac0-4172-9a3c-981c5f54f160"/>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="c0997bbf-477c-4487-9854-1d88c6f9efff"/>
+			</line>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="128" height="20" uuid="13fa6238-f4a6-4ee6-971a-5809f038a9b1"/>
+				<textFieldExpression><![CDATA[$F{tesista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="254" height="20" uuid="b0e86786-826e-41d8-aae8-1bc616825fa7"/>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="127" height="20" uuid="394ff811-57f9-4db0-9d33-fda1ec84efb5"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="417" y="34" width="80" height="20" uuid="71f3005f-d767-43fd-981c-f03dcac8de0e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="497" y="34" width="40" height="20" uuid="fd25d635-308c-407b-9d02-0d5f0a4c7135"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="34" width="100" height="20" uuid="e45146ee-68ac-4c74-b5fb-5d6740737fda"/>
+				<text><![CDATA[Emitido: ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="100" y="34" width="100" height="20" uuid="207cd3bf-3578-4458-9ef6-6fbdb33a3461"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

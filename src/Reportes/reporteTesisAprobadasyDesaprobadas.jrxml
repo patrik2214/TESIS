@@ -24,12 +24,16 @@ GROUP BY tesis.estado;]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="55" y="16" width="438" height="44" uuid="d6c1b768-1b64-4c56-b1f7-1792ff7fe861"/>
+				<reportElement x="100" y="16" width="422" height="44" uuid="d6c1b768-1b64-4c56-b1f7-1792ff7fe861"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE CANTIDAD TESIS APROBADAS Y DESAPROBADAS EN EL MES DE ]]></text>
 			</staticText>
+			<image>
+				<reportElement x="31" y="11" width="53" height="49" uuid="80d3366d-8817-4f3c-9e99-f21a1d38128b"/>
+				<imageExpression><![CDATA["D:\\pryTesis\\src\\Recursos\\logousat1.jpg"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -39,22 +43,25 @@ GROUP BY tesis.estado;]]>
 		<band height="40" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="2" width="100" height="20" uuid="105c1219-b022-4db0-a6ae-6892efc14cf3"/>
-				<text><![CDATA[valor]]></text>
+				<text><![CDATA[Estado de la Tesis]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="2" width="100" height="20" uuid="788f6733-af88-46a2-ae4b-e2e3ae2d1bf5"/>
-				<text><![CDATA[count]]></text>
+				<reportElement x="119" y="2" width="115" height="20" uuid="788f6733-af88-46a2-ae4b-e2e3ae2d1bf5"/>
+				<text><![CDATA[Cabtidad de alumnos]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="c947afb4-770b-4d3f-99ae-891f7fe20735"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="118" splitType="Stretch">
+		<band height="31" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="92913d00-eed8-4fdb-b554-3ad85ae22d50"/>
 				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="100" y="0" width="100" height="20" uuid="ccc922c4-b528-481e-a544-adfe61e3d79a"/>
+				<reportElement x="119" y="0" width="115" height="20" uuid="ccc922c4-b528-481e-a544-adfe61e3d79a"/>
 				<textFieldExpression><![CDATA[$F{count}]]></textFieldExpression>
 			</textField>
 		</band>
