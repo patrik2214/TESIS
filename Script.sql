@@ -101,3 +101,35 @@ VALUES
 INSERT INTO alumno
 VALUES
     (3, 'Carlos', 'Olivos Seclen', '73039283', '14-05-2000', 'Mz U Lote 3', 'seclen@gmail.com', 'A');
+
+
+--CONSULTAS 
+
+--Reporte de tesis aprobadas y rechazadas por año
+    /*
+        SELECT COUNT(*) as valor FROM alumno 
+        INNER JOIN tesis on tesis.id_Alumno = alumno.id
+        INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
+        WHERE  EXTRACT(YEAR FROM sustentacion.fecha)::int >= 2001 and EXTRACT(YEAR FROM sustentacion.fecha)::int <= 2005
+        GROUP BY tesis.estado;
+    */
+    
+
+
+--Reporte de tesis por pasar de año
+    /*
+        SELECT alumno.nombre||' '||alumno.apellido AS tesista,tesis.titulo,tesis.nota, sustentacion.fecha,tesis.estado FROM alumno 
+        INNER JOIN tesis on tesis.id_Alumno = alumno.id
+        INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
+        WHERE  (tesis.fecha- current_date)::int <=48
+    */
+    
+
+--Reporte de tesis por sustentar segun el mes ingresado 
+    /*
+        SELECT alumno.nombre||' '||alumno.apellido AS tesista,tesis.titulo,tesis.nota, sustentacion.fecha,tesis.estado FROM alumno 
+        INNER JOIN tesis on tesis.id_Alumno = alumno.id
+        INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
+        WHERE  EXTRACT(MONTH FROM sustentacion.fecha)::int = 1
+    */
+    
