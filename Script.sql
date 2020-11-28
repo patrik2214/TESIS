@@ -34,9 +34,7 @@ CREATE TABLE SUSTENTACION
     comentarios text NOT NULL,
     decision varchar(10) NOT NULL,
     estado boolean NOT NULL,
-    id_ambiente integer NOT NULL,
-    CONSTRAINT PK_sustentacion PRIMARY KEY ( Id ),
-    CONSTRAINT FK_173 FOREIGN KEY ( id_ambiente ) REFERENCES AMBIENTE ( id )
+    CONSTRAINT PK_sustentacion PRIMARY KEY ( Id )
 );
 
 CREATE TABLE TESIS
@@ -96,10 +94,10 @@ CREATE TABLE AUDITORIA
 
 INSERT INTO alumno
 VALUES
-    (1, 'Brawer', 'Nuñez Mesones', '73820292', '28-02-1999', 'Mz A Lt20', 'nmesonesb@gmail.com', 'A')
+    (1, 'Brawer', 'Nuñez Mesones', '73820292', '28-02-1999', 'Mz A Lt20', 'nmesonesb@gmail.com', 'A');
 INSERT INTO alumno
 VALUES
-    (2, 'Brandon Alonso', 'Chiroque Huamanchumo', '73811206', '28-02-1999', 'Mz E Lote 1', 'xiroque@gmail.com', 'A')
+    (2, 'Brandon Alonso', 'Chiroque Huamanchumo', '73811206', '28-02-1999', 'Mz E Lote 1', 'xiroque@gmail.com', 'A');
 INSERT INTO alumno
 VALUES
-    (3, 'Carlos', 'Olivos Seclen', '73039283', '14-05-2000', 'Mz U Lote 3', 'seclen@gmail.com', 'A')
+    (3, 'Carlos', 'Olivos Seclen', '73039283', '14-05-2000', 'Mz U Lote 3', 'seclen@gmail.com', 'A');
