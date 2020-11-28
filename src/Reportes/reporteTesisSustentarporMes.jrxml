@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteTesisSustentarporMes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bc8ef6bd-09f2-4dc6-82ff-0543b7677bd5">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="mes" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT alumno.nombre||' '||alumno.apellido AS tesista,tesis.titulo, sustentacion.fecha FROM alumno
+        INNER JOIN tesis on tesis.id_Alumno = alumno.id
+        INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
+        WHERE  EXTRACT(MONTH FROM sustentacion.fecha)::int = $P{mes}]]>
+	</queryString>
+	<field name="tesista" class="java.lang.String"/>
+	<field name="titulo" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="128" y="24" width="388" height="36" uuid="8ba397c0-4663-4908-a0a0-719847f5f44b"/>
+				<textElement textAlignment="Center">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE TESIS POR PASAR DE PLAZO ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="67" y="18" width="61" height="42" uuid="99fc9302-a634-4c7e-b271-ee9fdf55513a"/>
+				<imageExpression><![CDATA["D:\\pryTesis\\src\\Recursos\\logousat1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="198" height="20" uuid="b1bc1e90-290e-4f10-ad7b-c002dcef73c6"/>
+				<text><![CDATA[Alumno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="2" width="215" height="20" uuid="fc2f9493-eefd-46b7-b246-77c38db8dce1"/>
+				<text><![CDATA[Título de la Tesis]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="2" width="104" height="20" uuid="8b27cdf0-103b-43fa-943a-fa77727af774"/>
+				<text><![CDATA[Sustentación]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="7c422b3a-fa2c-481f-8d32-28f00ebf74a5"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="198" height="20" uuid="cd647815-63a0-4fff-9df5-3237203d1356"/>
+				<textFieldExpression><![CDATA[$F{tesista}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="213" y="6" width="215" height="20" uuid="454b32c7-ba9e-44cd-ac8f-40f6f1358e79"/>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="6" width="100" height="20" uuid="8287bda6-a8d8-47b8-9586-ddc93625f930"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="34" width="100" height="20" uuid="bf3b393c-9bee-4906-abca-8904dad8493b"/>
+				<text><![CDATA[Emisión: ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="100" y="34" width="100" height="20" uuid="8cdc0cab-3887-4f42-9e6e-172062d52703"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="34" width="80" height="20" uuid="81e77a99-a3ee-4d88-80e1-9b0f7da0dc7f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="508" y="34" width="40" height="20" uuid="28c32c4a-12b3-4e4a-abdc-00a01a2de5ac"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

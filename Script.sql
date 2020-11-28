@@ -127,7 +127,7 @@ VALUES
 
 --Reporte de tesis por sustentar segun el mes ingresado 
     /*
-        SELECT alumno.nombre||' '||alumno.apellido AS tesista,tesis.titulo,tesis.nota, sustentacion.fecha,tesis.estado FROM alumno 
+        SELECT alumno.nombre||' '||alumno.apellido AS tesista,tesis.titulo, sustentacion.fecha FROM alumno 
         INNER JOIN tesis on tesis.id_Alumno = alumno.id
         INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
         WHERE  EXTRACT(MONTH FROM sustentacion.fecha)::int = 1
