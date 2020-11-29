@@ -19,6 +19,8 @@ public class jd_BuscarDocente extends javax.swing.JDialog {
     /**
      * Creates new form jd_BuscarDocente2
      */
+    public static clsDocente docenteFiltrado;
+    
     public jd_BuscarDocente(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -235,7 +237,7 @@ public class jd_BuscarDocente extends javax.swing.JDialog {
         try {
             int codigo = (int) tblBuscarDocente.getValueAt(tblBuscarDocente.getSelectedRow(), 0);
 
-            clsDocente docenteFiltrado = clsDocente.buscar(codigo);
+            docenteFiltrado = clsDocente.buscar(codigo);
             jd_Docente.txtDNI.setText(docenteFiltrado.getDni());
             jd_Docente.txtNombre.setText(docenteFiltrado.getNombre());
             jd_Docente.txtApellido.setText(docenteFiltrado.getApellido());

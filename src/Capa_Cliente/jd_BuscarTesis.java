@@ -22,6 +22,7 @@ public class jd_BuscarTesis extends javax.swing.JDialog {
     public static boolean funcModificar;
     public static boolean Sus_funcNuevo;
     public static boolean Sus_funcModificar;
+    public static clsTesis tesisFiltrada;
     /**
      * Creates new form jd_BuscarAlumno
      */
@@ -241,7 +242,7 @@ public class jd_BuscarTesis extends javax.swing.JDialog {
         try {
             int codigo = (int) tblBuscarAlumno.getValueAt(tblBuscarAlumno.getSelectedRow(), 0);
             clsAlumno alumnoFiltrado = clsAlumno.buscar(codigo);
-            clsTesis tesisFiltrada = clsTesis.buscar(alumnoFiltrado.getId());
+            tesisFiltrada = clsTesis.buscar(alumnoFiltrado.getId());
             if (funcModificar == true) {
                 if (tesisFiltrada == null) {
                     JOptionPane.showMessageDialog(this, "Tesis aún no registrada para este alumno");
