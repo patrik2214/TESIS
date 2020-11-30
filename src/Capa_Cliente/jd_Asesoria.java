@@ -8,7 +8,6 @@ package Capa_Cliente;
 import Capa_Negocio.clsAsesoria;
 import Capa_Negocio.clsDocente;
 import Capa_Negocio.clsTesis;
-import java.util.HashSet;
 import javax.swing.JOptionPane;
 /**
  *
