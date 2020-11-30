@@ -396,6 +396,10 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
 
     private void mnu_OAsesoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_OAsesoriaActionPerformed
         // TODO add your handling code here:
+        jd_Asesoria obj = new  jd_Asesoria(this, true);
+        obj.setLocationRelativeTo(obj);
+        obj.setVisible(true);
+        
     }//GEN-LAST:event_mnu_OAsesoriaActionPerformed
 
     private void mnu_ODocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_ODocumentoActionPerformed
