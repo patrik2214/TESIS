@@ -64,7 +64,6 @@ public class jd_Sutentacion extends javax.swing.JFrame {
         lblAlumno = new javax.swing.JLabel();
         lblTesis = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -195,7 +194,7 @@ public class jd_Sutentacion extends javax.swing.JFrame {
 
         lblAlumno.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblAlumno.setForeground(new java.awt.Color(244, 244, 249));
-        jPanel2.add(lblAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 20, 24, 25));
+        jPanel2.add(lblAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 220, 25));
 
         lblTesis.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblTesis.setForeground(new java.awt.Color(244, 244, 249));
@@ -205,7 +204,6 @@ public class jd_Sutentacion extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("-");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 148, 12, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 220, 30));
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 59, 220, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -347,7 +345,6 @@ public class jd_Sutentacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     public static javax.swing.JLabel lblAlumno;
     public static javax.swing.JLabel lblTesis;
