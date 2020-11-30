@@ -24,7 +24,7 @@ public class jd_Sutentacion extends javax.swing.JFrame {
     public jd_Sutentacion() {
         initComponents();
         try {           
-            listarCombos();
+            //listarCombos();
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error al listar Combos");
         }
@@ -64,7 +64,6 @@ public class jd_Sutentacion extends javax.swing.JFrame {
         lblAlumno = new javax.swing.JLabel();
         lblTesis = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
@@ -195,7 +194,7 @@ public class jd_Sutentacion extends javax.swing.JFrame {
 
         lblAlumno.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblAlumno.setForeground(new java.awt.Color(244, 244, 249));
-        jPanel2.add(lblAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 18, 24, 25));
+        jPanel2.add(lblAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 220, 25));
 
         lblTesis.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblTesis.setForeground(new java.awt.Color(244, 244, 249));
@@ -205,7 +204,6 @@ public class jd_Sutentacion extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("-");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(286, 148, 12, -1));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 20, 220, 30));
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 59, 220, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,7 +267,7 @@ public class jd_Sutentacion extends javax.swing.JFrame {
                         objS.setCalificacion(cboCalificacion.getSelectedItem().toString());
                         objS.setComentarios(txtComentarios.getText());
                         objS.setDecision(cboDesicion.getSelectedItem().toString());
-                        objS.setAmbiente((clsAmbiente) cboAmbiente.getSelectedItem());
+                        //objS.setAmbiente((clsAmbiente) cboAmbiente.getSelectedItem());
                         objS.setEstado(chkEstado.isSelected());
                         objS.registrar(alumnoid);
                         limpiar();
@@ -303,13 +301,13 @@ public class jd_Sutentacion extends javax.swing.JFrame {
             cboCalificacion.setSelectedIndex(0);
             txtComentarios.setText("");
             cboDesicion.setSelectedIndex(0);
-            cboAmbiente.setSelectedIndex(-1);
+            //cboAmbiente.setSelectedIndex(-1);
             chkEstado.setSelected(true);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Error al limpiar");
         }
     }
-    
+    /*
     private void listarCombos() throws Exception {
 
         try {
@@ -322,17 +320,19 @@ public class jd_Sutentacion extends javax.swing.JFrame {
             throw ex;
         }
     }
+    */
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnGuardar;
+    public static javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JComboBox<String> cboCalificacion;
-    private javax.swing.JComboBox<String> cboDesicion;
-    private javax.swing.JComboBox<String> cboHora_Fin;
-    private javax.swing.JComboBox<String> cboHora_Inicio;
-    private javax.swing.JCheckBox chkEstado;
-    private com.toedter.calendar.JDateChooser dcFecha;
+    public static javax.swing.JComboBox<String> cboCalificacion;
+    public static javax.swing.JComboBox<String> cboDesicion;
+    public static javax.swing.JComboBox<String> cboHora_Fin;
+    public static javax.swing.JComboBox<String> cboHora_Inicio;
+    public static javax.swing.JCheckBox chkEstado;
+    public static com.toedter.calendar.JDateChooser dcFecha;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -345,10 +345,9 @@ public class jd_Sutentacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JLabel lblAlumno;
-    private javax.swing.JLabel lblTesis;
-    private javax.swing.JTextArea txtComentarios;
+    public static javax.swing.JLabel lblAlumno;
+    public static javax.swing.JLabel lblTesis;
+    public static javax.swing.JTextArea txtComentarios;
     // End of variables declaration//GEN-END:variables
 }
