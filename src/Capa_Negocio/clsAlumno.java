@@ -60,11 +60,57 @@ public class clsAlumno {
         }
     }
     
+    public static ArrayList<clsAlumno> buscarPorNombre(String nombreCompleto) throws Exception
+    {
+        try (Connection con = clsJDBC.getConexion()) {
+            ArrayList<clsAlumno> lista = new ArrayList<>();
+            String strSQL = "SELECT * FROM Alumno where CONCAT(nombre,' ',apellido ) ilike ?";
+            PreparedStatement ps = con.prepareStatement(strSQL);
+            ps.setString(1,"%" + nombreCompleto + "%");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                clsAlumno objA = new clsAlumno();
+                objA.setId(rs.getInt(1));
+                objA.setNombre(rs.getString(2));
+                objA.setApellido(rs.getString(3));
+                objA.setDni(rs.getString(4));
+                objA.setEstado(rs.getString(5));
+                lista.add(objA);
+            }
+            return lista;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage()+"Error al buscar Alumno");
+        }
+    }
+    public static clsAlumno buscarPorDni(String dni)throws Exception
+    {
+        try(Connection con = clsJDBC.getConexion()){
+            String strSQL = "SELECT * FROM alumno WHERE dni = ?";
+            PreparedStatement ps = con.prepareStatement(strSQL);
+            ps.setString(1,dni);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                clsAlumno objA = new clsAlumno();
+                objA.setDni(dni);
+                objA.setNombre(rs.getString(2));
+                objA.setApellido(rs.getString(3));
+                objA.setFecha_nacimiento(rs.getDate(5));
+                objA.setDireccion(rs.getString(6));               
+                objA.setCorreo(rs.getString(7));               
+                objA.setEstado(rs.getString(8));
+                return objA;
+            }else{
+                return null;
+            }
+        }catch(Exception e){
+            throw new Exception("Error al buscar Alumno");
+        }
+    }
     public void registrar() throws Exception {
         try (Connection con = clsJDBC.getConexion()) {
             String strSQL = "INSERT INTO alumno VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement ps = con.prepareStatement(strSQL);
-            ps.setInt(1, this.id);
+            ps.setInt(1,this.id);
             ps.setString(2, this.nombre);
             ps.setString(3, this.apellido);
             ps.setString(4, this.dni);
@@ -74,7 +120,7 @@ public class clsAlumno {
             ps.setString(8, this.estado);
             ps.execute();
         } catch (Exception e) {
-            throw new Exception("Error al registrar Alumno");
+            throw new Exception(e.getMessage()+" Error al registrar Alumno");
         }
     }
     
@@ -114,7 +160,7 @@ public class clsAlumno {
     
     public void modificar(clsAlumno objA) throws Exception {
         try (Connection con = clsJDBC.getConexion()) {
-            String strSQL = "UPDATE alumno SET nombre = ?, apellido = ?, dni = ?, fecha_nacimiento = ?, direccion = ?, correo = ?, estado = ? WHERE id = ?";
+            String strSQL = "UPDATE alumno SET nombre = ?, apellido = ?, dni = ?, fecha_nacimiento = ?, direccion = ?, correo = ? WHERE id = ?";
             PreparedStatement ps = con.prepareStatement(strSQL);
             ps.setString(1, objA.getNombre());
             ps.setString(2, objA.getApellido());
@@ -122,8 +168,24 @@ public class clsAlumno {
             ps.setDate(4, objA.getFecha_nacimiento());
             ps.setString(5, objA.getDireccion());           
             ps.setString(6, objA.getCorreo());           
-            ps.setString(7, objA.getEstado());
-            ps.setInt(8, id);
+            //ps.setString(7, objA.getEstado());
+            ps.setInt(7, id);
+            ps.execute();
+            
+        } catch (Exception e) {
+            throw new Exception("Error al modificar Alumno");
+        }
+    }
+    public void modificarPorDni(clsAlumno objA) throws Exception {
+        try (Connection con = clsJDBC.getConexion()) {
+            String strSQL = "UPDATE alumno SET nombre = ?, apellido = ?, fecha_nacimiento = ?, direccion = ?, correo = ? WHERE dni = ?";
+            PreparedStatement ps = con.prepareStatement(strSQL);
+            ps.setString(1, objA.getNombre());
+            ps.setString(2, objA.getApellido());
+            ps.setDate(3, objA.getFecha_nacimiento());
+            ps.setString(4, objA.getDireccion());           
+            ps.setString(5, objA.getCorreo());           
+            ps.setString(6, objA.getDni());
             ps.execute();
             
         } catch (Exception e) {
@@ -133,10 +195,22 @@ public class clsAlumno {
     
     public static void darBaja(int id) throws Exception {
         try (Connection con = clsJDBC.getConexion()) {
-            String strSQL = "UPDATE alumno SET estado = ? WHERE id = ?";
+            String strSQL = "UPDATE alumno SET estado = ? WHERE dni = ?";
             PreparedStatement ps = con.prepareStatement(strSQL);
             ps.setString(1, "I");
             ps.setInt(2, id);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            throw new Exception("Error al dar baja Alumno");
+        }
+    }
+    
+    public static void darBajaPorDni(String dni) throws Exception {
+        try (Connection con = clsJDBC.getConexion()) {
+            String strSQL = "UPDATE alumno SET estado = ? WHERE dni = ?";
+            PreparedStatement ps = con.prepareStatement(strSQL);
+            ps.setString(1, "I");
+            ps.setString(2, dni);
             ps.executeUpdate();
         } catch (Exception e) {
             throw new Exception("Error al dar baja Alumno");

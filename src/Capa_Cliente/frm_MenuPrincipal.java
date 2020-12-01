@@ -41,7 +41,6 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         mnuSistema = new javax.swing.JMenu();
         mnuSCerrarSesion = new javax.swing.JMenuItem();
         mnuMantenimiento = new javax.swing.JMenu();
-        mnuMAmbiente = new javax.swing.JMenuItem();
         mnuMHorario = new javax.swing.JMenuItem();
         mnuMDocente = new javax.swing.JMenuItem();
         mnuMAlumno = new javax.swing.JMenuItem();
@@ -53,17 +52,9 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         mnu_OSustentacion = new javax.swing.JMenuItem();
         mnu_ODocumento = new javax.swing.JMenuItem();
         mnuReporte = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        rTesisMes = new javax.swing.JMenuItem();
+        rTesisPasar = new javax.swing.JMenuItem();
+        rTesisEstado = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal");
@@ -135,21 +126,17 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
 
         mnuSCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cerrar.png"))); // NOI18N
         mnuSCerrarSesion.setText("Cerrar Sesion");
+        mnuSCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuSCerrarSesionActionPerformed(evt);
+            }
+        });
         mnuSistema.add(mnuSCerrarSesion);
 
         jMenuBar1.add(mnuSistema);
 
         mnuMantenimiento.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         mnuMantenimiento.setText("Mantenimiento");
-
-        mnuMAmbiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/ambiente.png"))); // NOI18N
-        mnuMAmbiente.setText("Ambiente");
-        mnuMAmbiente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mnuMAmbienteActionPerformed(evt);
-            }
-        });
-        mnuMantenimiento.add(mnuMAmbiente);
 
         mnuMHorario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/horario.png"))); // NOI18N
         mnuMHorario.setText("Horario");
@@ -194,10 +181,20 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
 
         mnu_OJurado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/jurado.png"))); // NOI18N
         mnu_OJurado.setText("Asignar jurado");
+        mnu_OJurado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnu_OJuradoActionPerformed(evt);
+            }
+        });
         jMenu3.add(mnu_OJurado);
 
         mnu_OAuditoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/auditoria.png"))); // NOI18N
         mnu_OAuditoria.setText("Auditoría");
+        mnu_OAuditoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnu_OAuditoriaActionPerformed(evt);
+            }
+        });
         jMenu3.add(mnu_OAuditoria);
 
         mnu_OTesis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/tesis.png"))); // NOI18N
@@ -232,85 +229,29 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         mnuReporte.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         mnuReporte.setText("Reporte");
 
-        jMenuItem2.setText("Lista de préstamos del alumno agrupados por categoria");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        rTesisMes.setText("Cantidad de tesis por sustentar en el presente año según la fecha");
+        rTesisMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                rTesisMesActionPerformed(evt);
             }
         });
-        mnuReporte.add(jMenuItem2);
+        mnuReporte.add(rTesisMes);
 
-        jMenu1.setText("Préstamo");
-
-        jMenuItem1.setText("Cantidad anual de prestamos según la carrera profesional");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        rTesisPasar.setText("Cantidad de tesis por pasar el plazo");
+        rTesisPasar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                rTesisPasarActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        mnuReporte.add(rTesisPasar);
 
-        jMenuItem8.setText("Cantidad de préstamos al año por categoria");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        rTesisEstado.setText("Cantidad de tesis aprobadas o rechazadas según rango de años");
+        rTesisEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                rTesisEstadoActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem8);
-
-        jMenuItem6.setText("Cantidad de préstamos por vencer a la fecha actual");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem6);
-
-        jMenuItem5.setText("Listado de préstamos del mes anterior de un estudiante según su categoria");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem5);
-
-        jMenuItem3.setText("Cantidad de observaciones en el préstamo de un estudiante en un determinado año");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setText("Cantidad de préstamos por categoria de un estudiante");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem7.setText("Cantidad mensual de préstamo de un libro");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
-            }
-        });
-        jMenu1.add(jMenuItem7);
-
-        mnuReporte.add(jMenu1);
-
-        jMenu2.setText("Devolución");
-
-        jMenuItem9.setText("Entrega de libros prestados al día");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMenuItem9);
-
-        mnuReporte.add(jMenu2);
+        mnuReporte.add(rTesisEstado);
 
         jMenuBar1.add(mnuReporte);
 
@@ -334,52 +275,16 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
-
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-
-
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
-
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
-       
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
-
-    private void mnuMAmbienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMAmbienteActionPerformed
-        jd_Ambiente obj = new jd_Ambiente();
+    private void rTesisMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rTesisMesActionPerformed
+        jd_ReporteTesisMes obj = new jd_ReporteTesisMes(this,true);
         obj.setLocationRelativeTo(this);
         obj.setVisible(true);
-    }//GEN-LAST:event_mnuMAmbienteActionPerformed
+    }//GEN-LAST:event_rTesisMesActionPerformed
 
     private void mnuMHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMHorarioActionPerformed
-        // TODO add your handling code here:
+        jd_Horario obj = new jd_Horario(this,true);
+        obj.setLocationRelativeTo(this);
+        obj.setVisible(true);
     }//GEN-LAST:event_mnuMHorarioActionPerformed
 
     private void mnuMDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuMDocenteActionPerformed
@@ -403,7 +308,7 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mnu_OAsesoriaActionPerformed
 
     private void mnu_ODocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_ODocumentoActionPerformed
-        
+
     }//GEN-LAST:event_mnu_ODocumentoActionPerformed
 
     private void mnu_OTesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_OTesisActionPerformed
@@ -421,6 +326,32 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         obj.setVisible(true);
     }//GEN-LAST:event_mnu_OSustentacionActionPerformed
 
+    private void mnu_OJuradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_OJuradoActionPerformed
+
+    }//GEN-LAST:event_mnu_OJuradoActionPerformed
+
+    private void mnu_OAuditoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_OAuditoriaActionPerformed
+        jd_Auditoria obj = new jd_Auditoria(this,true);
+        obj.setLocationRelativeTo(this);
+        obj.setVisible(true);
+    }//GEN-LAST:event_mnu_OAuditoriaActionPerformed
+
+    private void rTesisPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rTesisPasarActionPerformed
+        jd_ReporteTesisPasar obj = new jd_ReporteTesisPasar(this,true);
+        obj.setLocationRelativeTo(this);
+        obj.setVisible(true);
+    }//GEN-LAST:event_rTesisPasarActionPerformed
+
+    private void rTesisEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rTesisEstadoActionPerformed
+        jd_ReporteTesisEstado obj = new jd_ReporteTesisEstado(this,true);
+        obj.setLocationRelativeTo(this);
+        obj.setVisible(true);
+    }//GEN-LAST:event_rTesisEstadoActionPerformed
+
+    private void mnuSCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSCerrarSesionActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_mnuSCerrarSesionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -430,25 +361,13 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblFecha1;
     private javax.swing.JLabel lblUsuarioActivo;
     private javax.swing.JMenuItem mnuMAlumno;
-    private javax.swing.JMenuItem mnuMAmbiente;
     private javax.swing.JMenuItem mnuMDocente;
     private javax.swing.JMenuItem mnuMHorario;
     private javax.swing.JMenu mnuMantenimiento;
@@ -461,5 +380,8 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnu_OJurado;
     private javax.swing.JMenuItem mnu_OSustentacion;
     private javax.swing.JMenuItem mnu_OTesis;
+    private javax.swing.JMenuItem rTesisEstado;
+    private javax.swing.JMenuItem rTesisMes;
+    private javax.swing.JMenuItem rTesisPasar;
     // End of variables declaration//GEN-END:variables
 }
