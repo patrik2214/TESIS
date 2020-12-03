@@ -21,7 +21,6 @@ public class jd_Tesis extends javax.swing.JDialog {
     public jd_Tesis(javax.swing.JDialog parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
     }
 
     /**
@@ -38,7 +37,6 @@ public class jd_Tesis extends javax.swing.JDialog {
         lblAlumno = new javax.swing.JLabel();
         btnSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        txtTitulo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtTema = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -80,18 +78,16 @@ public class jd_Tesis extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Mantenimiento de Ambiente");
+        setTitle("Mantenimiento de Tesis");
         setBackground(new java.awt.Color(255, 255, 51));
 
         jPanel2.setBackground(new java.awt.Color(88, 111, 124));
         jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, null, java.awt.Color.darkGray, java.awt.Color.darkGray));
         jPanel2.setForeground(new java.awt.Color(34, 116, 165));
-        jPanel2.setMaximumSize(null);
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAlumno.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        lblAlumno.setForeground(new java.awt.Color(244, 244, 249));
-        jPanel2.add(lblAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 255, 25));
+        jPanel2.add(lblAlumno, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 255, 25));
 
         btnSalir.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/cerrar_mantenimiento.png"))); // NOI18N
@@ -109,14 +105,6 @@ public class jd_Tesis extends javax.swing.JDialog {
         jLabel2.setForeground(new java.awt.Color(244, 244, 249));
         jLabel2.setText("Titulo:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 61, 25));
-
-        txtTitulo.setPreferredSize(new java.awt.Dimension(30, 22));
-        txtTitulo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTituloActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 255, 30));
 
         jLabel5.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(244, 244, 249));
@@ -406,10 +394,6 @@ public class jd_Tesis extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtResolucion_SustentacionActionPerformed
 
-    private void txtTituloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTituloActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTituloActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
         limpiar();
@@ -428,7 +412,7 @@ public class jd_Tesis extends javax.swing.JDialog {
     public void limpiar() {
         try {
             lblAlumno.setText("");
-            txtTitulo.setText("");
+            txtTitulo1.setText("");
             txtTema.setText("");
             txtNota.setText("");
             txtResolucion_Jurado.setText("");
@@ -444,7 +428,7 @@ public class jd_Tesis extends javax.swing.JDialog {
 
     public void limpiar2() {
         try {
-            txtTitulo.setText("");
+            txtTitulo1.setText("");
             txtTema.setText("");
             txtNota.setText("");
             txtResolucion_Jurado.setText("");
@@ -461,14 +445,14 @@ public class jd_Tesis extends javax.swing.JDialog {
         try {
             if (btnGuardar.getText().equals("Nuevo")) {
                 limpiar2();
-                txtTitulo.requestFocus();
+                txtTitulo1.requestFocus();
                 btnGuardar.setText("Guardar");
             } else if(btnGuardar.getText().equals("Guardar")) {
-                if (!txtTitulo.getText().equalsIgnoreCase("")){
+                if (!txtTitulo1.getText().equalsIgnoreCase("")){
                     btnGuardar.setText("Nuevo");
                     clsTesis objT = new clsTesis();
                     objT.setId(clsTesis.generarCodigo());
-                    objT.setTitulo(txtTitulo.getText());
+                    objT.setTitulo(txtTitulo1.getText());
                     objT.setTema(txtTema.getText());
                     objT.setFecha(clsJDBC.fecha_actual());
                     objT.setNota(Integer.parseInt(txtNota.getText()));
@@ -525,7 +509,6 @@ public class jd_Tesis extends javax.swing.JDialog {
     public static javax.swing.JTextField txtResolucion_Jurado;
     public static javax.swing.JTextField txtResolucion_Sustentacion;
     public static javax.swing.JTextField txtTema;
-    public static javax.swing.JTextField txtTitulo;
     public static javax.swing.JTextField txtTitulo1;
     // End of variables declaration//GEN-END:variables
 }

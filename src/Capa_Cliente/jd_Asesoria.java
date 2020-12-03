@@ -66,6 +66,7 @@ public class jd_Asesoria extends javax.swing.JDialog {
         jButton2.setText("Eliminar");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Mantenimiento de Asesoría");
 
         jPanel1.setBackground(new java.awt.Color(88, 111, 124));
 

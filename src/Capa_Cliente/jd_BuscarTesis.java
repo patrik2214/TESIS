@@ -249,7 +249,7 @@ public class jd_BuscarTesis extends javax.swing.JDialog {
                 } else {
                     jd_Tesis.alumno_seleccionado = codigo;
                     jd_Tesis.lblAlumno.setText(alumnoFiltrado.getApellido() + ", " + alumnoFiltrado.getNombre());
-                    jd_Tesis.txtTitulo.setText(tesisFiltrada.getTitulo());
+                    jd_Tesis.txtTitulo1.setText(tesisFiltrada.getTitulo());
                     jd_Tesis.txtTema.setText(tesisFiltrada.getTema());
                     jd_Tesis.txtNota.setText(String.valueOf(tesisFiltrada.getNota()));
                     jd_Tesis.txtResolucion_Jurado.setText(tesisFiltrada.getResolucionJurado());
@@ -271,7 +271,7 @@ public class jd_BuscarTesis extends javax.swing.JDialog {
                 jd_Tesis.alumno_seleccionado = codigo;
                 jd_Tesis.lblAlumno.setText(alumnoFiltrado.getApellido() + " " + alumnoFiltrado.getNombre());
                 jd_Tesis.btnGuardar.setText("Guardar");
-                jd_Tesis.txtTitulo.requestFocus();
+                jd_Tesis.txtTitulo1.requestFocus();
                 funcNuevo = false;
                 this.dispose();
             } else if (Sus_funcNuevo == true){
