@@ -162,7 +162,7 @@ public class jd_Auditoria extends javax.swing.JDialog {
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addComponent(cboComentario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,11 +170,10 @@ public class jd_Auditoria extends javax.swing.JDialog {
                         .addComponent(btnBuscarCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jdFecha, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
-                            .addComponent(txtBuscarTesis, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(txtBuscarTesis, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnBuscarTesis, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBuscarTesis, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jdFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_modificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,14 +198,15 @@ public class jd_Auditoria extends javax.swing.JDialog {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(btnBuscarTesis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(55, 55, 55))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                        .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(txtBuscarTesis, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(11, 11, 11)))
+                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(11, 11, 11)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btn_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,9 +215,7 @@ public class jd_Auditoria extends javax.swing.JDialog {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnSalir))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jdFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(195, 195, 195)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -246,18 +244,18 @@ public class jd_Auditoria extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        try {
-            txtCodigo.setText(String.valueOf(objAuditoria.generarCodigo()));
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Error al generar el código de la auditoria"+ e.getMessage());
-        }
     }//GEN-LAST:event_formWindowOpened
 
     private void btnBuscarTesisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarTesisActionPerformed
         // TODO add your handling code here:
-        jd_BuscarTesis objJD = new jd_BuscarTesis(null, true);
-        objJD.setLocationRelativeTo(this);
-        objJD.setVisible(true);
+        jd_BuscarTesis objT = new jd_BuscarTesis(new javax.swing.JDialog(), true);
+        objT.setLocationRelativeTo(null);
+        objT.setVisible(true);
+        try {
+            txtBuscarTesis.setText(jd_BuscarTesis.tesisFiltrada.getTitulo());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
     }//GEN-LAST:event_btnBuscarTesisActionPerformed
 
     private void btn_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificarActionPerformed
@@ -273,9 +271,9 @@ public class jd_Auditoria extends javax.swing.JDialog {
                 }
                 objAuditoria.setComentarios(txaComentario.getText());
                 objAuditoria.setEstado(estado);
-                objAuditoria.modificar(objAuditoria);
+                //objAuditoria.modificar(objAuditoria);
                 objAuditoria.setFecha((Date) jdFecha.getDate());
-                objAuditoria.modificar(objAuditoria);
+                //objAuditoria.modificar(objAuditoria);
                 JOptionPane.showMessageDialog(this,"Asesoria modificada correctamente");
             }
             
@@ -288,17 +286,18 @@ public class jd_Auditoria extends javax.swing.JDialog {
     private void btn_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_nuevoActionPerformed
         // TODO add your handling code here:
         try {
-            if(btn_nuevo.equals("Nuevo")){
+            if(btn_nuevo.getText().equals("Nuevo")){
                 txtCodigo.setText(String.valueOf(objAuditoria.generarCodigo()));
                 btn_nuevo.setText("Guardar");
             }else{
-                if(btn_nuevo.equals("Guardar")){
+                if(btn_nuevo.getText().equals("Guardar")){
                     if(txtCodigo.getText().isEmpty() || txtBuscarTesis.getText().isEmpty() || txaComentario.getText().isEmpty() || jdFecha.getDate().equals("")){
                          JOptionPane.showMessageDialog(this,"Es necesario llenar todos los campos");
                     }else{
                         objAuditoria.setId(Integer.parseInt(txtCodigo.getText()));
-                        objTesis.setId(Integer.parseInt(txtBuscarTesis.getText()));
-                        objAuditoria.setFecha((Date) jdFecha.getDate());
+                        objAuditoria.setTesis((clsTesis) jd_BuscarTesis.tesisFiltrada);
+                        //objTesis.setId(Integer.parseInt(txtBuscarTesis.getText()));
+                        objAuditoria.setFecha(new java.sql.Date (jdFecha.getDate().getTime()));
                         boolean estado = false;
                         if(cboComentario.getSelectedItem().equals("Realizado")){
                             estado = true;

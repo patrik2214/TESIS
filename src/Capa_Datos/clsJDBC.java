@@ -13,12 +13,12 @@ public class clsJDBC {
        
     private Connection con;
     private static final String DRIVER = "org.postgresql.Driver";
-    private static final String DATABASE = "dbtesis";
+    private static final String DATABASE = "DB_Tesis";
     private static final String HOST = "localhost";
     private static final String PORT = "5432";
     private static final String URL = String.format("jdbc:postgresql://%s:%s/%s", HOST, PORT, DATABASE);
     private static final String USER = "postgres";
-    private static final String PASSWORD = "123456";//21080809
+    private static final String PASSWORD = "123456789";//21080809
 
     public static Connection getConexion() throws Exception {
 
