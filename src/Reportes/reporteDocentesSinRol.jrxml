@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2204c78f-8cfc-48da-804e-0a0ddfbf6e81">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select docente.nombre||''||docente.apellido as nombres ,docente.dni,docente.correo from DOCENTE
+INNER JOIN ASESORIA on asesoria.id_docente=docente.id
+INNER JOIN ASIGNACION_JURADO on asignacion_jurado.id_docente=docente.id
+INNER JOIN TESIS on tesis.id=asignacion_jurado.id_tesis
+INNER JOIN sustentacion on sustentacion.id=tesis.id_sustentacion
+WHERE tesis.estado=false and asesoria.fecha<current_date and sustentacion.fecha<current_date]]>
+	</queryString>
+	<field name="nombres" class="java.lang.String"/>
+	<field name="dni" class="java.lang.String"/>
+	<field name="correo" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="49" y="17" width="454" height="48" uuid="450172b8-b80e-49c5-b6ca-67c53bc4d92b"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Docentes sin Rol de Asesor o Jurado]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="0" width="164" height="20" uuid="cf9ed3f2-6a74-4c7d-8931-78192fb47fc4"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="148" height="20" uuid="1ef59305-feb5-4b04-b9f0-56cfcaf666de"/>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="0" width="158" height="20" uuid="ee5fa536-54bd-4694-a4e3-c8e2c86edddc"/>
+				<text><![CDATA[Correo institucional]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="29" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="0" width="164" height="25" uuid="6bea9d02-8623-45c4-b250-ad5f77fd912f"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="148" height="20" uuid="58be566d-a0ea-4005-b804-2dffa7638eac"/>
+				<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="0" width="158" height="20" uuid="a822b1f3-ac97-4ffe-acab-8d662c2f4b2d"/>
+				<textFieldExpression><![CDATA[$F{correo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="34" width="100" height="20" uuid="62dddca4-a716-4270-889d-6eb0a6af78e4"/>
+				<text><![CDATA[Emito:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="100" y="34" width="100" height="20" uuid="7880837c-ae94-4f1d-8c7f-63f2dbd585cd"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="34" width="80" height="20" uuid="99de0ce5-3ff6-4bbb-9874-8e8eebc77ecf"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="514" y="34" width="40" height="20" uuid="6e148de2-602e-42a5-968e-ef3bf036cfe0"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

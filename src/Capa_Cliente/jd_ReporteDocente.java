@@ -17,12 +17,12 @@ import net.sf.jasperreports.swing.JRViewer;
  *
  * @author HP
  */
-public class jd_ReporteTesisPasar extends javax.swing.JDialog {
+public class jd_ReporteDocente extends javax.swing.JDialog {
 
     /**
      * Creates new form jd_ReporteTesisEstado
      */
-    public jd_ReporteTesisPasar(java.awt.Frame parent, boolean modal) {
+    public jd_ReporteDocente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.vistaReporte.setVisible(false);
@@ -96,7 +96,7 @@ public class jd_ReporteTesisPasar extends javax.swing.JDialog {
         try{
             Container contenedor = this.vistaReporte;
             contenedor.setLayout(new BorderLayout());
-            JRViewer objReporte = new Reportes().reporteInterno("reporteTesisporCaducar.jasper", null);
+            JRViewer objReporte = new Reportes().reporteInterno("reporteDocentesSinRol.jasper", null);
             contenedor.add(objReporte);
             objReporte.setVisible(true);
             this.vistaReporte.setVisible(true);
