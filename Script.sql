@@ -132,4 +132,14 @@ VALUES
         INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
         WHERE  EXTRACT(MONTH FROM sustentacion.fecha)::int = 1
     */
+--Reporte de Docentes sin rol 
+    /*
+        SELECT docente.nombre||''||docente.apellido as nombres ,docente.dni,docente.correo from DOCENTE
+        INNER JOIN ASESORIA on asesoria.id_docente=docente.id
+        INNER JOIN ASIGNACION_JURADO on asignacion_jurado.id_docente=docente.id
+        INNER JOIN TESIS on tesis.id=asignacion_jurado.id_tesis
+        INNER JOIN sustentacion on sustentacion.id=tesis.id_sustentacion
+        WHERE tesis.estado=false and asesoria.fecha<current_date and sustentacion.fecha<current_date
+    */
+
     
