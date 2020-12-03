@@ -21,16 +21,12 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="128" y="24" width="388" height="36" uuid="8ba397c0-4663-4908-a0a0-719847f5f44b"/>
+				<reportElement x="90" y="26" width="388" height="36" uuid="8ba397c0-4663-4908-a0a0-719847f5f44b"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE TESIS POR PASAR DE PLAZO ]]></text>
 			</staticText>
-			<image>
-				<reportElement x="67" y="18" width="61" height="42" uuid="99fc9302-a634-4c7e-b271-ee9fdf55513a"/>
-				<imageExpression><![CDATA["D:\\pryTesis\\src\\Recursos\\logousat1.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>

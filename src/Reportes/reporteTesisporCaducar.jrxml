@@ -18,16 +18,12 @@ WHERE  (tesis.fecha- current_date)::int <=48]]>
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="93" y="24" width="410" height="33" uuid="36d466de-e013-495b-bc67-002f9fcdca7a"/>
+				<reportElement x="76" y="24" width="410" height="33" uuid="36d466de-e013-495b-bc67-002f9fcdca7a"/>
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE TESIS POR PASAR EL PLAZO]]></text>
 			</staticText>
-			<image>
-				<reportElement x="34" y="24" width="46" height="33" uuid="50009f92-1eeb-4d70-a214-c424ef7a24d6"/>
-				<imageExpression><![CDATA["D:\\pryTesis\\src\\Recursos\\logousat1.jpg"]]></imageExpression>
-			</image>
 		</band>
 	</title>
 	<pageHeader>
