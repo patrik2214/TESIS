@@ -65,7 +65,7 @@ public class clsAuditoria {
             ps.setDate(5, this.fecha);           
             ps.execute();
         } catch (Exception e) {
-            throw new Exception("Error al registrar Auditoria");
+            throw new Exception("Error al registrar Auditoria: "+ e.getMessage());
         }
     }
     
