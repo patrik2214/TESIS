@@ -345,7 +345,18 @@ public class jd_Auditoria extends javax.swing.JDialog {
             if(txtCodigo.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this,"El código es requerido para realizar una busqueda");
             }else{
+                String estado;
                 objAuditoria.buscar(Integer.parseInt(txtCodigo.getText()));
+                txaComentario.setText(objAuditoria.getComentarios());
+                jdFecha.setDate(objAuditoria.getFecha());
+                if(objAuditoria.getEstado()){
+                    estado = "Realizada";
+                }else{
+                    estado = "No realizada";
+                }
+                cboEstado.setSelectedItem(estado);
+                txtAlumno.setText(objAuditoria.getTesis().getAlumno().toString());
+                txtBuscarTesis.setText(String.valueOf(objAuditoria.getTesis().getId()));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,"Error al buscar auditoria: "+ e.getMessage());

@@ -10,14 +10,14 @@
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT COUNT(*),tesis.estado as valor FROM alumno
+		<![CDATA[SELECT COUNT(*),CASE WHEN tesis.estado=true THEN 'Aprobado' WHEN tesis.estado=false THEN 'Desaprobado' END as valor FROM alumno
 INNER JOIN tesis on tesis.id_Alumno = alumno.id
 INNER JOIN sustentacion on sustentacion.id=tesis.id_Sustentacion
 WHERE  EXTRACT(YEAR FROM sustentacion.fecha)::int >= $P{año_inicio} and EXTRACT(YEAR FROM sustentacion.fecha)::int <= $P{año_fin}
 GROUP BY tesis.estado;]]>
 	</queryString>
 	<field name="count" class="java.lang.Long"/>
-	<field name="valor" class="java.lang.Boolean"/>
+	<field name="valor" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -43,7 +43,7 @@ GROUP BY tesis.estado;]]>
 			</staticText>
 			<staticText>
 				<reportElement x="119" y="2" width="115" height="20" uuid="788f6733-af88-46a2-ae4b-e2e3ae2d1bf5"/>
-				<text><![CDATA[Cabtidad de alumnos]]></text>
+				<text><![CDATA[Cantidad de alumnos]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="22" width="555" height="1" uuid="c947afb4-770b-4d3f-99ae-891f7fe20735"/>
