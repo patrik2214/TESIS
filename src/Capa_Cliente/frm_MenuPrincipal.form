@@ -168,7 +168,7 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="rTesisMes">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cantidad de tesis por sustentar en el presente a&#xf1;o seg&#xfa;n la fecha"/>
+                <Property name="text" type="java.lang.String" value="Reporte de tesis por sustentar en el presente a&#xf1;o seg&#xfa;n un mes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rTesisMesActionPerformed"/>
@@ -176,7 +176,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="rTesisPasar">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cantidad de tesis por pasar el plazo"/>
+                <Property name="text" type="java.lang.String" value="Reporte de tesis por pasar el plazo"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rTesisPasarActionPerformed"/>
@@ -184,10 +184,18 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="rTesisEstado">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cantidad de tesis aprobadas o rechazadas seg&#xfa;n rango de a&#xf1;os"/>
+                <Property name="text" type="java.lang.String" value="Reporte de tesis aprobadas o rechazadas seg&#xfa;n rango de a&#xf1;os"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rTesisEstadoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte de Docentes sin Rol"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

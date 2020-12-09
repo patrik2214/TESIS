@@ -55,6 +55,7 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         rTesisMes = new javax.swing.JMenuItem();
         rTesisPasar = new javax.swing.JMenuItem();
         rTesisEstado = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal");
@@ -229,7 +230,7 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         mnuReporte.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         mnuReporte.setText("Reporte");
 
-        rTesisMes.setText("Cantidad de tesis por sustentar en el presente año según la fecha");
+        rTesisMes.setText("Reporte de tesis por sustentar en el presente año según un mes");
         rTesisMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rTesisMesActionPerformed(evt);
@@ -237,7 +238,7 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         });
         mnuReporte.add(rTesisMes);
 
-        rTesisPasar.setText("Cantidad de tesis por pasar el plazo");
+        rTesisPasar.setText("Reporte de tesis por pasar el plazo");
         rTesisPasar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rTesisPasarActionPerformed(evt);
@@ -245,13 +246,21 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         });
         mnuReporte.add(rTesisPasar);
 
-        rTesisEstado.setText("Cantidad de tesis aprobadas o rechazadas según rango de años");
+        rTesisEstado.setText("Reporte de tesis aprobadas o rechazadas según rango de años");
         rTesisEstado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rTesisEstadoActionPerformed(evt);
             }
         });
         mnuReporte.add(rTesisEstado);
+
+        jMenuItem1.setText("Reporte de Docentes sin Rol");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        mnuReporte.add(jMenuItem1);
 
         jMenuBar1.add(mnuReporte);
 
@@ -352,6 +361,13 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_mnuSCerrarSesionActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        jd_ReporteDocente obj = new jd_ReporteDocente(this,true);
+        obj.setLocationRelativeTo(this);
+        obj.setVisible(true);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -363,6 +379,7 @@ public class frm_MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblFecha1;
